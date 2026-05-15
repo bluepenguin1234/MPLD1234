@@ -186,6 +186,52 @@
   font-size: 10px;
   font-style: normal;
 }
+
+/* ── COMMUNITY ── */
+.community-section {
+  background: var(--brown);
+  color: var(--cream);
+  border-bottom: none;
+}
+
+.community-section .section-label { color: var(--gold); }
+.community-section .section-title { color: var(--cream); }
+.community-section .ornament { color: var(--gold); }
+
+.social-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.btn-social {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  text-decoration: none;
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 14px;
+  letter-spacing: 1px;
+  padding: 14px 32px;
+  transition: background .2s, color .2s;
+}
+
+.btn-social:hover {
+  background: var(--gold);
+  color: var(--brown);
+}
+
+.community-sub {
+  color: #9a8a7a;
+  font-style: italic;
+  font-size: 14px;
+  margin-top: 24px;
+}
   </style>
 </head>
 <body>
@@ -268,7 +314,28 @@
     </div>
   </section>
 
-  <!-- Sections go here -->
+  <section class="section community-section" id="community">
+    <div class="section-inner">
+      <span class="section-label">The Pasta Gang</span>
+      <h2 class="section-title">Join the community.</h2>
+      <span class="ornament">✦ ✦ ✦</span>
+      <p class="section-body" style="color: #9a8a7a; margin-bottom: 32px;">
+        We're building something on TikTok and Instagram. Pasta content,
+        hat drops, and people who get it. Follow along.
+      </p>
+      <div class="social-buttons">
+        <a class="btn-social" href="TIKTOK_HANDLE_PLACEHOLDER" target="_blank" rel="noopener">
+          TikTok
+        </a>
+        <a class="btn-social" href="INSTAGRAM_HANDLE_PLACEHOLDER" target="_blank" rel="noopener">
+          Instagram
+        </a>
+      </div>
+      <p class="community-sub">More drops coming. Don't miss it.</p>
+    </div>
+  </section>
+
+  <!-- Footer goes here -->
 
   <script>
     function cloneHat(containerId, width) {
