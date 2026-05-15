@@ -251,6 +251,26 @@ footer a {
 }
 
 footer a:hover { color: var(--muted); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 640px) {
+  nav { padding: 16px 20px; }
+  nav ul { gap: 18px; }
+  nav a { font-size: 11px; letter-spacing: 1px; }
+
+  .hero { padding: 60px 20px 48px; }
+
+  .section { padding: 60px 20px; }
+
+  .product-layout { flex-direction: column; text-align: center; }
+  .product-details { text-align: center; }
+  .product-details .section-label,
+  .product-details .section-title { text-align: center; }
+  .product-specs li { text-align: center; }
+
+  .social-buttons { flex-direction: column; align-items: center; }
+  .btn-social { width: 100%; max-width: 280px; justify-content: center; }
+}
   </style>
 </head>
 <body>
