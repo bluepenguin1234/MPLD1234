@@ -56,6 +56,54 @@
     }
 
     nav a:hover { color: var(--brown); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 80px 24px 60px;
+  border-bottom: 1px solid var(--light-border);
+}
+
+.hero-hat {
+  margin-bottom: 36px;
+  filter: drop-shadow(0 16px 32px rgba(0,0,0,0.12));
+}
+
+.hero-slogan {
+  font-size: clamp(36px, 6vw, 64px);
+  font-style: italic;
+  line-height: 1.1;
+  margin-bottom: 14px;
+  color: var(--brown);
+}
+
+.hero-sub {
+  font-size: 16px;
+  font-style: italic;
+  color: var(--muted);
+  margin-bottom: 36px;
+  letter-spacing: 0.5px;
+}
+
+.btn-primary {
+  display: inline-block;
+  background: var(--brown);
+  color: var(--cream);
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 14px;
+  letter-spacing: 2px;
+  padding: 14px 42px;
+  text-decoration: none;
+  transition: background .2s;
+}
+
+.btn-primary:hover { background: #3a1800; }
   </style>
 </head>
 <body>
@@ -94,6 +142,13 @@
       <line x1="122" y1="142" x2="138" y2="142" stroke="#444" stroke-width="1"/>
     </svg>
   </template>
+
+  <section class="hero">
+    <div id="hero-hat" class="hero-hat"></div>
+    <h1 class="hero-slogan">More Pasta,<br>Less Drama.</h1>
+    <p class="hero-sub">The hat for people with priorities.</p>
+    <a class="btn-primary" href="SHOPIFY_LINK_PLACEHOLDER">Shop Now</a>
+  </section>
 
   <!-- Sections go here -->
 
