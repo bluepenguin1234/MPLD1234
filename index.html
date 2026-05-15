@@ -104,6 +104,50 @@
 }
 
 .btn-primary:hover { background: #3a1800; }
+
+/* ── SHARED SECTION STYLES ── */
+.section {
+  padding: 90px 24px;
+  border-bottom: 1px solid var(--light-border);
+}
+
+.section-inner {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.section-label {
+  font-size: 10px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-style: normal;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.section-title {
+  font-size: clamp(24px, 4vw, 36px);
+  font-style: italic;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.ornament {
+  color: var(--gold);
+  font-size: 14px;
+  letter-spacing: 10px;
+  margin: 24px 0;
+  display: block;
+}
+
+.section-body {
+  color: var(--muted);
+  font-size: 16px;
+  font-style: italic;
+  line-height: 1.85;
+}
   </style>
 </head>
 <body>
@@ -148,6 +192,21 @@
     <h1 class="hero-slogan">More Pasta,<br>Less Drama.</h1>
     <p class="hero-sub">The hat for people with priorities.</p>
     <a class="btn-primary" href="SHOPIFY_LINK_PLACEHOLDER">Shop Now</a>
+  </section>
+
+  <section class="section" id="about">
+    <div class="section-inner">
+      <span class="section-label">The Story</span>
+      <h2 class="section-title">Born in a booth.<br>Worn everywhere else.</h2>
+      <span class="ornament">✦ ✦ ✦</span>
+      <p class="section-body">
+        Some people stress over the menu. We don't. More Pasta, Less Drama is a state of mind —
+        white hat, black brim, pasta in front of you, drama behind you.
+        Wear it to dinner. Wear it to the game. Wear it anywhere life gets too complicated.
+        We're building a community of people who have their priorities straight.
+        Join us on TikTok and Instagram.
+      </p>
+    </div>
   </section>
 
   <!-- Sections go here -->
