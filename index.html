@@ -252,6 +252,30 @@ footer a {
 
 footer a:hover { color: var(--muted); }
 
+/* ── HAT VIEWS (front + back showcase) ── */
+.hat-views {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.hat-view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.hat-view-label {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-style: normal;
+}
+
 /* ── PASTA WATERMARK ── */
 .hero { position: relative; }
 .section { position: relative; }
@@ -296,6 +320,7 @@ footer a:hover { color: var(--muted); }
 
   .social-buttons { flex-direction: column; align-items: center; }
   .btn-social { width: 100%; max-width: 280px; justify-content: center; }
+  .hat-views { gap: 28px; }
 }
   </style>
 </head>
@@ -328,29 +353,54 @@ footer a:hover { color: var(--muted); }
     </ul>
   </nav>
 
-  <!-- Reusable hat SVG — referenced by hero and product sections -->
+  <!-- Reusable hat SVGs — cloned by JS into hero and product sections -->
   <template id="hat-svg-template">
-    <svg viewBox="0 0 260 155" xmlns="http://www.w3.org/2000/svg" aria-label="More Pasta, Less Drama structured snapback hat">
-      <!-- Crown: structured, 5-panel, white/off-white -->
-      <path d="M20 105 Q28 52 76 24 Q130 5 184 24 Q220 45 238 90 Q240 103 238 108 Q184 118 130 120 Q68 118 22 108 Z" fill="#f0ebe2"/>
-      <!-- Panel seam lines -->
-      <line x1="130" y1="7"  x2="130" y2="120" stroke="#ddd" stroke-width="0.8" opacity="0.55"/>
-      <line x1="76"  y1="22" x2="72"  y2="118" stroke="#ddd" stroke-width="0.6" opacity="0.45"/>
-      <line x1="184" y1="22" x2="188" y2="118" stroke="#ddd" stroke-width="0.6" opacity="0.45"/>
-      <!-- Sweatband -->
-      <path d="M22 108 Q130 122 238 108 Q238 114 236 118 Q130 132 24 118 Q22 114 22 108Z" fill="#d8d0c4"/>
-      <!-- Crown button/eyelet -->
-      <circle cx="130" cy="9" r="5.5" fill="#b0a898" stroke="#a09888" stroke-width="1"/>
-      <!-- Embroidered text: Lobster, black -->
-      <text x="130" y="72"  text-anchor="middle" font-family="'Lobster', cursive" font-size="17" fill="#1a0a00">More Pasta,</text>
-      <text x="130" y="96" text-anchor="middle" font-family="'Lobster', cursive" font-size="17" fill="#1a0a00">Less Drama</text>
-      <!-- Flat black brim (snapback style) -->
-      <path d="M22 116 Q0 121 2 131 Q4 140 24 139 Q80 143 130 143 Q180 143 236 139 Q256 140 258 131 Q260 121 238 116 Q184 126 130 127 Q72 126 22 116Z" fill="#111"/>
+    <svg viewBox="0 0 260 155" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="More Pasta, Less Drama hat - front">
+      <!-- Crown: unstructured, soft dome, off-white/cream — no panel seams -->
+      <path d="M28 108 C24 58 74 10 130 8 C186 10 236 58 232 108 C184 120 130 122 76 120 Z" fill="#f0ebe2"/>
+      <!-- Sweatband strip -->
+      <path d="M28 108 C76 120 130 122 184 120 Q220 114 232 108 Q232 116 231 120 Q130 134 29 120 Q28 116 28 108 Z" fill="#d8d0c4"/>
+      <!-- Crown button — red -->
+      <circle cx="130" cy="9" r="5" fill="#C42020" stroke="#A01818" stroke-width="1"/>
+      <!-- Embroidered text: Lobster, red -->
+      <text x="130" y="72" text-anchor="middle" font-family="'Lobster', cursive" font-size="17" fill="#C42020">More Pasta,</text>
+      <text x="130" y="96" text-anchor="middle" font-family="'Lobster', cursive" font-size="17" fill="#C42020">Less Drama</text>
+      <!-- Curved brim — red, dad hat style (shorter, banana curve) -->
+      <path d="M28 108 C-2 113 -6 124 -4 132 C-2 138 20 137 62 138 C90 139 130 140 170 139 C202 138 240 136 260 132 C262 124 258 113 232 108 C184 120 130 122 76 120 Z" fill="#C42020"/>
       <!-- Brim top edge -->
-      <path d="M22 116 Q130 127 238 116" stroke="#2a2a2a" stroke-width="1" fill="none"/>
-      <!-- Snap closure tab -->
-      <rect x="116" y="139" width="28" height="6" rx="2" fill="#2a2a2a"/>
-      <line x1="122" y1="142" x2="138" y2="142" stroke="#444" stroke-width="1"/>
+      <path d="M28 108 C76 120 130 122 184 120 C210 116 228 112 232 108" stroke="#A01818" stroke-width="1"/>
+      <!-- Brim stitching line -->
+      <path d="M-2 131 C62 139 130 141 200 138 C230 136 256 131 260 130" stroke="#A01818" stroke-width="0.8" opacity="0.6"/>
+    </svg>
+  </template>
+  <template id="hat-back-template">
+    <svg viewBox="0 0 260 155" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="More Pasta, Less Drama hat - back">
+      <!-- Crown: same soft dome shape, off-white, from behind -->
+      <path d="M28 108 C24 58 74 10 130 8 C186 10 236 58 232 108 C184 120 130 122 76 120 Z" fill="#f0ebe2"/>
+      <!-- Center back seam (subtle) -->
+      <line x1="130" y1="9" x2="130" y2="121" stroke="#d0c8bc" stroke-width="0.8" opacity="0.55"/>
+      <!-- Sweatband strip -->
+      <path d="M28 108 C76 120 130 122 184 120 Q220 114 232 108 Q232 116 231 120 Q130 134 29 120 Q28 116 28 108 Z" fill="#d8d0c4"/>
+      <!-- Crown button — red, visible from behind -->
+      <circle cx="130" cy="9" r="5" fill="#C42020" stroke="#A01818" stroke-width="1"/>
+      <!-- Cavatappi embroidery in butter yellow, centered on back panel -->
+      <g transform="translate(130, 63) scale(0.235) translate(-80, -175)" stroke="#F5C840" stroke-linecap="round" fill="none">
+        <path d="M20 95 C20 35 140 35 140 95" stroke-width="22"/>
+        <path d="M140 95 C145 133 15 150 20 185" stroke-width="16" stroke-opacity="0.45"/>
+        <path d="M20 185 C20 125 140 125 140 185" stroke-width="22"/>
+        <path d="M140 185 C145 223 15 240 20 275" stroke-width="16" stroke-opacity="0.45"/>
+        <path d="M20 275 C20 215 140 215 140 275" stroke-width="22"/>
+        <path d="M140 275 C145 305 100 315 70 312" stroke-width="16" stroke-opacity="0.45"/>
+      </g>
+      <!-- Adjustable fabric strap -->
+      <rect x="108" y="120" width="44" height="9" rx="2" fill="#d4cfc7"/>
+      <!-- Strap buckle/slider -->
+      <rect x="122" y="119" width="16" height="11" rx="1" fill="#b0a898"/>
+      <line x1="122" y1="124" x2="138" y2="124" stroke="#c8c0b0" stroke-width="1.5"/>
+      <!-- Curved brim from behind — red -->
+      <path d="M28 108 C-2 113 -6 124 -4 132 C-2 138 20 137 62 138 C90 139 130 140 170 139 C202 138 240 136 260 132 C262 124 258 113 232 108 C184 120 130 122 76 120 Z" fill="#C42020"/>
+      <path d="M28 108 C76 120 130 122 184 120 C210 116 228 112 232 108" stroke="#A01818" stroke-width="1"/>
+      <path d="M-2 131 C62 139 130 141 200 138 C230 136 256 131 260 130" stroke="#A01818" stroke-width="0.8" opacity="0.6"/>
     </svg>
   </template>
 
@@ -380,22 +430,30 @@ footer a:hover { color: var(--muted); }
 
   <section class="section" id="the-hat">
     <svg class="pasta-watermark" aria-hidden="true" focusable="false"><use href="#cavatappi"/></svg>
-    <div class="section-inner" style="max-width: 860px;">
-      <div class="product-layout">
-        <div id="product-hat" class="product-hat"></div>
-        <div class="product-details">
-          <span class="section-label">The Hat</span>
-          <h2 class="section-title">More Pasta,<br>Less Drama</h2>
-          <ul class="product-specs">
-            <li>Structured snapback</li>
-            <li>White crown</li>
-            <li>Black flat brim</li>
-            <li>Black script embroidery</li>
-            <li>Adjustable snap closure</li>
-            <li>One size fits most</li>
-          </ul>
-          <a class="btn-primary" href="SHOPIFY_LINK_PLACEHOLDER">Get Yours</a>
+    <div class="section-inner" style="max-width: 900px;">
+      <span class="section-label" style="display:block;text-align:center;margin-bottom:32px;">The Hat</span>
+      <div class="hat-views">
+        <div class="hat-view">
+          <div id="product-hat" class="product-hat"></div>
+          <span class="hat-view-label">Front</span>
         </div>
+        <div class="hat-view">
+          <div id="product-hat-back" class="product-hat"></div>
+          <span class="hat-view-label">Back</span>
+        </div>
+      </div>
+      <div class="product-details" style="text-align:center;max-width:400px;margin:0 auto;">
+        <h2 class="section-title" style="text-align:center;">More Pasta,<br>Less Drama</h2>
+        <ul class="product-specs" style="text-align:left;display:inline-block;">
+          <li>Unstructured dad hat</li>
+          <li>Off-white crown</li>
+          <li>Red curved brim</li>
+          <li>Red script embroidery — front</li>
+          <li>Butter yellow cavatappi — back</li>
+          <li>Adjustable fabric strap</li>
+        </ul>
+        <br>
+        <a class="btn-primary" href="SHOPIFY_LINK_PLACEHOLDER">Get Yours</a>
       </div>
     </div>
   </section>
@@ -433,9 +491,11 @@ footer a:hover { color: var(--muted); }
   </footer>
 
   <script>
-    function cloneHat(containerId, width) {
-      var template = document.getElementById('hat-svg-template');
+    function cloneHat(containerId, width, templateId) {
+      var tplId = templateId || 'hat-svg-template';
+      var template = document.getElementById(tplId);
       var container = document.getElementById(containerId);
+      if (!template || !container) return;
       var clone = template.content.cloneNode(true);
       var svg = clone.querySelector('svg');
       svg.style.width = width;
@@ -444,7 +504,8 @@ footer a:hover { color: var(--muted); }
     }
     document.addEventListener('DOMContentLoaded', function() {
       cloneHat('hero-hat', '320px');
-      cloneHat('product-hat', '280px');
+      cloneHat('product-hat', '220px');
+      cloneHat('product-hat-back', '220px', 'hat-back-template');
       document.getElementById('copy-year').textContent = new Date().getFullYear();
     });
   </script>
