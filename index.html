@@ -252,6 +252,32 @@ footer a {
 
 footer a:hover { color: var(--muted); }
 
+/* ── PASTA WATERMARK ── */
+.hero { position: relative; }
+.section { position: relative; }
+
+.section-inner { position: relative; z-index: 1; }
+.hero > *:not(.pasta-watermark) { position: relative; z-index: 1; }
+
+.pasta-watermark {
+  position: absolute;
+  width: 200px;
+  height: 400px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-12deg);
+  opacity: 0.06;
+  pointer-events: none;
+  z-index: 0;
+  color: var(--brown);
+  overflow: visible;
+}
+
+.community-section .pasta-watermark {
+  color: var(--cream);
+  opacity: 0.09;
+}
+
 /* ── RESPONSIVE ── */
 @media (max-width: 640px) {
   nav { padding: 16px 20px; }
@@ -274,6 +300,24 @@ footer a:hover { color: var(--muted); }
   </style>
 </head>
 <body>
+
+  <!-- Cavatappi pasta watermark symbol -->
+  <svg style="display:none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="cavatappi" viewBox="0 0 160 320" fill="none" stroke="currentColor" stroke-linecap="round">
+      <!-- Loop 1: front arc (top) — full opacity, faces viewer -->
+      <path d="M20 95 C20 35 140 35 140 95" stroke-width="22"/>
+      <!-- Loop 1: back connection curving behind to loop 2 -->
+      <path d="M140 95 C145 133 15 150 20 185" stroke-width="16" stroke-opacity="0.3"/>
+      <!-- Loop 2: front arc -->
+      <path d="M20 185 C20 125 140 125 140 185" stroke-width="22"/>
+      <!-- Loop 2: back connection to loop 3 -->
+      <path d="M140 185 C145 223 15 240 20 275" stroke-width="16" stroke-opacity="0.3"/>
+      <!-- Loop 3: front arc -->
+      <path d="M20 275 C20 215 140 215 140 275" stroke-width="22"/>
+      <!-- Loop 3: trailing end -->
+      <path d="M140 275 C145 305 100 315 70 312" stroke-width="16" stroke-opacity="0.3"/>
+    </symbol>
+  </svg>
 
   <nav>
     <ul>
@@ -311,6 +355,7 @@ footer a:hover { color: var(--muted); }
   </template>
 
   <section class="hero">
+    <svg class="pasta-watermark" aria-hidden="true" focusable="false"><use href="#cavatappi"/></svg>
     <div id="hero-hat" class="hero-hat"></div>
     <h1 class="hero-slogan">More Pasta,<br>Less Drama.</h1>
     <p class="hero-sub">The hat for people with priorities.</p>
@@ -318,6 +363,7 @@ footer a:hover { color: var(--muted); }
   </section>
 
   <section class="section" id="about">
+    <svg class="pasta-watermark" aria-hidden="true" focusable="false"><use href="#cavatappi"/></svg>
     <div class="section-inner">
       <span class="section-label">The Story</span>
       <h2 class="section-title">Born in a booth.<br>Worn everywhere else.</h2>
@@ -333,6 +379,7 @@ footer a:hover { color: var(--muted); }
   </section>
 
   <section class="section" id="the-hat">
+    <svg class="pasta-watermark" aria-hidden="true" focusable="false"><use href="#cavatappi"/></svg>
     <div class="section-inner" style="max-width: 860px;">
       <div class="product-layout">
         <div id="product-hat" class="product-hat"></div>
@@ -354,6 +401,7 @@ footer a:hover { color: var(--muted); }
   </section>
 
   <section class="section community-section" id="community">
+    <svg class="pasta-watermark" aria-hidden="true" focusable="false"><use href="#cavatappi"/></svg>
     <div class="section-inner">
       <span class="section-label">The Pasta Gang</span>
       <h2 class="section-title">Join the community.</h2>
