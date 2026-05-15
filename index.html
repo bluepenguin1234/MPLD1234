@@ -148,6 +148,44 @@
   font-style: italic;
   line-height: 1.85;
 }
+
+/* ── THE HAT ── */
+.product-layout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+
+.product-hat {
+  flex-shrink: 0;
+  filter: drop-shadow(0 12px 24px rgba(0,0,0,0.10));
+}
+
+.product-details {
+  max-width: 300px;
+  text-align: left;
+}
+
+.product-details .section-label { text-align: left; }
+.product-details .section-title { text-align: left; font-size: 24px; }
+
+.product-specs {
+  list-style: none;
+  margin: 20px 0 28px;
+  color: var(--muted);
+  font-style: italic;
+  font-size: 15px;
+  line-height: 2;
+}
+
+.product-specs li::before {
+  content: '✦  ';
+  color: var(--gold);
+  font-size: 10px;
+  font-style: normal;
+}
   </style>
 </head>
 <body>
@@ -206,6 +244,27 @@
         We're building a community of people who have their priorities straight.
         Join us on TikTok and Instagram.
       </p>
+    </div>
+  </section>
+
+  <section class="section" id="the-hat">
+    <div class="section-inner" style="max-width: 860px;">
+      <div class="product-layout">
+        <div id="product-hat" class="product-hat"></div>
+        <div class="product-details">
+          <span class="section-label">The Hat</span>
+          <h2 class="section-title">More Pasta,<br>Less Drama</h2>
+          <ul class="product-specs">
+            <li>Structured snapback</li>
+            <li>White crown</li>
+            <li>Black flat brim</li>
+            <li>Black script embroidery</li>
+            <li>Adjustable snap closure</li>
+            <li>One size fits most</li>
+          </ul>
+          <a class="btn-primary" href="SHOPIFY_LINK_PLACEHOLDER">Get Yours</a>
+        </div>
+      </div>
     </div>
   </section>
 
