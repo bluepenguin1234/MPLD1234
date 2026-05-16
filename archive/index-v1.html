@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boston Pasta Lab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #f5f0e8;
+      --brown: #1a0a00;
+      --gold:  #c8a000;
+      --muted: #9a7a5a;
+      --light-border: #d4cfc7;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--brown);
+      font-family: Georgia, 'Times New Roman', serif;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 48px;
+      background: var(--cream);
+      border-bottom: 1px solid var(--light-border);
+    }
+
+    .nav-brand {
+      font-family: Georgia, serif;
+      font-size: 12px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--brown);
+      font-style: italic;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 32px;
+    }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-style: normal;
+      transition: color .2s;
+    }
+
+    nav a:hover { color: var(--brown); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 80px 24px 60px;
+  border-bottom: 1px solid var(--light-border);
+}
+
+.hero-hat {
+  margin-bottom: 36px;
+  filter: drop-shadow(0 16px 32px rgba(0,0,0,0.12));
+}
+
+.hero-slogan {
+  font-size: clamp(36px, 6vw, 64px);
+  font-style: italic;
+  line-height: 1.1;
+  margin-bottom: 14px;
+  color: var(--brown);
+}
+
+.hero-sub {
+  font-size: 16px;
+  font-style: italic;
+  color: var(--muted);
+  margin-bottom: 36px;
+  letter-spacing: 0.5px;
+}
+
+.btn-primary {
+  display: inline-block;
+  background: var(--brown);
+  color: var(--cream);
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 14px;
+  letter-spacing: 2px;
+  padding: 14px 42px;
+  text-decoration: none;
+  transition: background .2s;
+}
+
+.btn-primary:hover { background: #3a1800; }
+
+/* ── SHARED SECTION STYLES ── */
+.section {
+  padding: 90px 24px;
+  border-bottom: 1px solid var(--light-border);
+}
+
+.section-inner {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.section-label {
+  font-size: 10px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-style: normal;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.section-title {
+  font-size: clamp(24px, 4vw, 36px);
+  font-style: italic;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.ornament {
+  color: var(--gold);
+  font-size: 14px;
+  letter-spacing: 10px;
+  margin: 24px 0;
+  display: block;
+}
+
+.section-body {
+  color: var(--muted);
+  font-size: 16px;
+  font-style: italic;
+  line-height: 1.85;
+}
+
+/* ── THE HAT ── */
+.product-layout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+
+.product-hat {
+  flex-shrink: 0;
+  filter: drop-shadow(0 12px 24px rgba(0,0,0,0.10));
+}
+
+.product-details {
+  max-width: 300px;
+  text-align: left;
+}
+
+.product-details .section-label { text-align: left; }
+.product-details .section-title { text-align: left; font-size: 24px; }
+
+.product-specs {
+  list-style: none;
+  margin: 20px 0 28px;
+  color: var(--muted);
+  font-style: italic;
+  font-size: 15px;
+  line-height: 2;
+}
+
+.product-specs li::before {
+  content: '✦  ';
+  color: var(--gold);
+  font-size: 10px;
+  font-style: normal;
+}
+
+/* ── COMMUNITY ── */
+.community-section {
+  background: var(--brown);
+  color: var(--cream);
+  border-bottom: none;
+}
+
+.community-section .section-label { color: var(--gold); }
+.community-section .section-title { color: var(--cream); }
+.community-section .ornament { color: var(--gold); }
+
+.social-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.btn-social {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  text-decoration: none;
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 14px;
+  letter-spacing: 1px;
+  padding: 14px 32px;
+  transition: background .2s, color .2s;
+}
+
+.btn-social:hover {
+  background: var(--gold);
+  color: var(--brown);
+}
+
+.community-sub {
+  color: #9a8a7a;
+  font-style: italic;
+  font-size: 14px;
+  margin-top: 24px;
+}
+
+/* ── FOOTER ── */
+footer {
+  padding: 24px;
+  text-align: center;
+  background: var(--brown);
+  color: #4a3a2a;
+  font-size: 12px;
+  font-style: italic;
+  letter-spacing: 1px;
+  border-top: 1px solid #2a1a0a;
+}
+
+footer a {
+  color: #6a5a4a;
+  text-decoration: none;
+}
+
+footer a:hover { color: var(--muted); }
+
+/* ── HAT VIEWS (front + back showcase) ── */
+.hat-views {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.hat-view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.hat-view-label {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-style: normal;
+}
+
+/* ── PASTA WATERMARK ── */
+.hero { position: relative; }
+.section { position: relative; }
+
+.section-inner { position: relative; z-index: 1; }
+.hero > *:not(.pasta-watermark) { position: relative; z-index: 1; }
+
+.pasta-watermark {
+  position: absolute;
+  width: 200px;
+  height: 400px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-12deg);
+  opacity: 0.06;
+  pointer-events: none;
+  z-index: 0;
+  color: var(--brown);
+  overflow: visible;
+}
+
+.community-section .pasta-watermark {
+  color: var(--cream);
+  opacity: 0.09;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 640px) {
+  nav { padding: 16px 20px; }
+  nav ul { gap: 18px; }
+  nav a { font-size: 11px; letter-spacing: 1px; }
+
+  .hero { padding: 60px 20px 48px; }
+
+  .section { padding: 60px 20px; }
+
+  .product-layout { flex-direction: column; text-align: center; }
+  .product-details { text-align: center; }
+  .product-details .section-label,
+  .product-details .section-title { text-align: center; }
+  .product-specs li { text-align: center; }
+
+  .social-buttons { flex-direction: column; align-items: center; }
+  .btn-social { width: 100%; max-width: 280px; justify-content: center; }
+  .hat-views { gap: 28px; }
+}
+  </style>
+</head>
+<body>
+
+  <!-- Cavatappi pasta watermark symbol -->
+  <svg style="display:none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="cavatappi" viewBox="0 0 160 320" fill="none" stroke="currentColor" stroke-linecap="round">
+      <path d="M20 95 C20 35 140 35 140 95" stroke-width="22"/>
+      <path d="M140 95 C145 133 15 150 20 185" stroke-width="16" stroke-opacity="0.3"/>
+      <path d="M20 185 C20 125 140 125 140 185" stroke-width="22"/>
+      <path d="M140 185 C145 223 15 240 20 275" stroke-width="16" stroke-opacity="0.3"/>
+      <path d="M20 275 C20 215 140 215 140 275" stroke-width="22"/>
+      <path d="M140 275 C145 305 100 315 70 312" stroke-width="16" stroke-opacity="0.3"/>
+    </symbol>
+  </svg>
+
+  <nav>
+    <span class="nav-brand">Boston Pasta Lab</span>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#the-hat">The Hat</a></li>
+      <li><a href="SHOPIFY_LINK_PLACEHOLDER">Shop</a></li>
+      <li><a href="#community">Follow Us</a></li>
+    </ul>
+  </nav>
+
+  <!-- Reusable hat SVGs — cloned by JS into hero and product sections -->
+  <template id="hat-svg-template">
+    <svg viewBox="0 0 260 155" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="More Pasta, Less Drama hat - front">
+      <path d="M28 108 C24 58 74 10 130 8 C186 10 236 58 232 108 C184 120 130 122 76 120 Z" fill="#f0ebe2"/>
+      <path d="M28 108 C76 120 130 122 184 120 Q220 114 232 108 Q232 116 231 120 Q130 134 29 120 Q28 116 28 108 Z" fill="#d8d0c4"/>
+      <circle cx="130" cy="9" r="5" fill="#C42020" stroke="#A01818" stroke-width="1"/>
+      <text x="130" y="72" text-anchor="middle" font-family="'Lobster', cursive" font-size="17" fill="#C42020">More Pasta,</text>
+      <text x="130" y="96" text-anchor="middle" font-family="'Lobster', cursive" font-size="17" fill="#C42020">Less Drama</text>
+      <path d="M28 108 C-2 113 -6 124 -4 132 C-2 138 20 137 62 138 C90 139 130 140 170 139 C202 138 240 136 260 132 C262 124 258 113 232 108 C184 120 130 122 76 120 Z" fill="#C42020"/>
+      <path d="M28 108 C76 120 130 122 184 120 C210 116 228 112 232 108" stroke="#A01818" stroke-width="1"/>
+      <path d="M-2 131 C62 139 130 141 200 138 C230 136 256 131 260 130" stroke="#A01818" stroke-width="0.8" opacity="0.6"/>
+    </svg>
+  </template>
+  <template id="hat-back-template">
+    <svg viewBox="0 0 260 155" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="More Pasta, Less Drama hat - back">
+      <path d="M28 108 C24 58 74 10 130 8 C186 10 236 58 232 108 C184 120 130 122 76 120 Z" fill="#f0ebe2"/>
+      <line x1="130" y1="9" x2="130" y2="121" stroke="#d0c8bc" stroke-width="0.8" opacity="0.55"/>
+      <path d="M28 108 C76 120 130 122 184 120 Q220 114 232 108 Q232 116 231 120 Q130 134 29 120 Q28 116 28 108 Z" fill="#d8d0c4"/>
+      <circle cx="130" cy="9" r="5" fill="#C42020" stroke="#A01818" stroke-width="1"/>
+      <g transform="translate(130, 63) scale(0.235) translate(-80, -175)" stroke="#F5C840" stroke-linecap="round" fill="none">
+        <path d="M20 95 C20 35 140 35 140 95" stroke-width="22"/>
+        <path d="M140 95 C145 133 15 150 20 185" stroke-width="16" stroke-opacity="0.45"/>
+        <path d="M20 185 C20 125 140 125 140 185" stroke-width="22"/>
+        <path d="M140 185 C145 223 15 240 20 275" stroke-width="16" stroke-opacity="0.45"/>
+        <path d="M20 275 C20 215 140 215 140 275" stroke-width="22"/>
+        <path d="M140 275 C145 305 100 315 70 312" stroke-width="16" stroke-opacity="0.45"/>
+      </g>
+      <rect x="108" y="120" width="44" height="9" rx="2" fill="#d4cfc7"/>
+      <rect x="122" y="119" width="16" height="11" rx="1" fill="#b0a898"/>
+      <line x1="122" y1="124" x2="138" y2="124" stroke="#c8c0b0" stroke-width="1.5"/>
+      <path d="M28 108 C-2 113 -6 124 -4 132 C-2 138 20 137 62 138 C90 139 130 140 170 139 C202 138 240 136 260 132 C262 124 258 113 232 108 C184 120 130 122 76 120 Z" fill="#C42020"/>
+      <path d="M28 108 C76 120 130 122 184 120 C210 116 228 112 232 108" stroke="#A01818" stroke-width="1"/>
+      <path d="M-2 131 C62 139 130 141 200 138 C230 136 256 131 260 130" stroke="#A01818" stroke-width="0.8" opacity="0.6"/>
+    </svg>
+  </template>
+
+  <section class="hero">
+    <svg class="pasta-watermark" aria-hidden="true" focusable="false"><use href="#cavatappi"/></svg>
+    <div id="hero-hat" class="hero-hat"></div>
+    <h1 class="hero-slogan">More Pasta,<br>Less Drama.</h1>
+    <p class="hero-sub">The hat for people with priorities.</p>
+    <a class="btn-primary" href="SHOPIFY_LINK_PLACEHOLDER">Shop Now</a>
+  </section>
+
+  <section class="section" id="about">
+    <svg class="pasta-watermark" aria-hidden="true" focusable="false"><use href="#cavatappi"/></svg>
+    <div class="section-inner">
+      <span class="section-label">The Story</span>
+      <h2 class="section-title">Born in a booth.<br>Worn everywhere else.</h2>
+      <span class="ornament">✦ ✦ ✦</span>
+      <p class="section-body">
+        Some people stress over the menu. We don't. Boston Pasta Lab is built on one
+        principle — More Pasta, Less Drama. Off-white crown, red brim, pasta in front of
+        you, drama somewhere behind you. Wear it to Sunday dinner. Wear it to the game.
+        Wear it anywhere life gets too complicated. We're building a community of people
+        who have their priorities straight. Join us on TikTok and Instagram.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" id="the-hat">
+    <svg class="pasta-watermark" aria-hidden="true" focusable="false"><use href="#cavatappi"/></svg>
+    <div class="section-inner" style="max-width: 900px;">
+      <span class="section-label" style="display:block;text-align:center;margin-bottom:32px;">The Hat</span>
+      <div class="hat-views">
+        <div class="hat-view">
+          <div id="product-hat" class="product-hat"></div>
+          <span class="hat-view-label">Front</span>
+        </div>
+        <div class="hat-view">
+          <div id="product-hat-back" class="product-hat"></div>
+          <span class="hat-view-label">Back</span>
+        </div>
+      </div>
+      <div class="product-details" style="text-align:center;max-width:400px;margin:0 auto;">
+        <h2 class="section-title" style="text-align:center;">More Pasta,<br>Less Drama</h2>
+        <ul class="product-specs" style="text-align:left;display:inline-block;">
+          <li>Unstructured dad hat</li>
+          <li>Off-white crown</li>
+          <li>Red curved brim</li>
+          <li>Red script embroidery — front</li>
+          <li>Butter yellow cavatappi — back</li>
+          <li>Adjustable fabric strap</li>
+        </ul>
+        <br>
+        <a class="btn-primary" href="SHOPIFY_LINK_PLACEHOLDER">Get Yours</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section community-section" id="community">
+    <svg class="pasta-watermark" aria-hidden="true" focusable="false"><use href="#cavatappi"/></svg>
+    <div class="section-inner">
+      <span class="section-label">The Pasta Gang</span>
+      <h2 class="section-title">Join the community.</h2>
+      <span class="ornament">✦ ✦ ✦</span>
+      <p class="section-body" style="color: #9a8a7a; margin-bottom: 32px;">
+        We're building something on TikTok and Instagram. Pasta content,
+        hat drops, and people who get it. Follow along.
+      </p>
+      <div class="social-buttons">
+        <a class="btn-social" href="https://tiktok.com/@bostonpastalab" target="_blank" rel="noopener noreferrer">TikTok</a>
+        <a class="btn-social" href="https://instagram.com/bostonpastalab" target="_blank" rel="noopener noreferrer">Instagram</a>
+      </div>
+      <p class="community-sub">More drops coming. Don't miss it.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>© <span id="copy-year"></span> Boston Pasta Lab &nbsp;·&nbsp;
+      <a href="https://tiktok.com/@bostonpastalab" target="_blank" rel="noopener noreferrer">TikTok</a>
+      &nbsp;·&nbsp;
+      <a href="https://instagram.com/bostonpastalab" target="_blank" rel="noopener noreferrer">Instagram</a>
+      &nbsp;·&nbsp;
+      <a href="SHOPIFY_LINK_PLACEHOLDER">Shop</a>
+    </p>
+  </footer>
+
+  <script>
+    function cloneHat(containerId, width, templateId) {
+      var tplId = templateId || 'hat-svg-template';
+      var template = document.getElementById(tplId);
+      var container = document.getElementById(containerId);
+      if (!template || !container) return;
+      var clone = template.content.cloneNode(true);
+      var svg = clone.querySelector('svg');
+      svg.style.width = width;
+      svg.style.height = 'auto';
+      container.appendChild(clone);
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+      cloneHat('hero-hat', '320px');
+      cloneHat('product-hat', '220px');
+      cloneHat('product-hat-back', '220px', 'hat-back-template');
+      document.getElementById('copy-year').textContent = new Date().getFullYear();
+    });
+  </script>
+</body>
+</html>
